@@ -20,5 +20,5 @@ except FileNotFoundError:
 
 # print(data['receipts'][0].keys()) shows us al the keys in receipts
 merchant_name = output_info['receipts'][0]['merchant_name']
-total = data['receipts'][0]['total']
+total = output_info['receipts'][0]['total']
 print(f"You spent {total} at {merchant_name}")
