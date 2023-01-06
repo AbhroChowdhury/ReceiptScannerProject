@@ -14,9 +14,11 @@ with open("output1.json", "w") as f:
 
 try:
     with open("output1.json", "r") as f:
-        data = json.load(f)
+        output_info = json.load(f)
 except FileNotFoundError:
     print("There seems to be something wrong. No json response file was generated from the input receipts")
 
-# we care about receipts key only
-print(data['receipts'])
+# print(data['receipts'][0].keys()) shows us al the keys in receipts
+merchant_name = output_info['receipts'][0]['merchant_name']
+total = data['receipts'][0]['total']
+print(f"You spent {total} at {merchant_name}")
