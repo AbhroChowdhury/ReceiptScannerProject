@@ -18,7 +18,18 @@ try:
 except FileNotFoundError:
     print("There seems to be something wrong. No json response file was generated from the input receipts")
 
-# print(data['receipts'][0].keys()) shows us al the keys in receipts
+
+# print(data['receipts'][0].keys()) shows us al the keys in receipts merchant_name = output_info['receipts'][0]['merchant_name']
 merchant_name = output_info['receipts'][0]['merchant_name']
-total = output_info['receipts'][0]['total']
-print(f"You spent {total} at {merchant_name}")
+total = int(output_info['receipts'][0]['total'])
+subtotal = int(output_info['receipts'][0]['subtotal'])
+tax = int(output_info['receipts'][0]['tax'])
+
+try:
+    if total == None:
+        total = subtotal + tax
+        print(f"You spent {total} at {merchant_name}")
+    else:
+        print(f"You spent {total} at {merchant_name}")
+except TypeError:
+    print('Error! Please take clearer picture')
